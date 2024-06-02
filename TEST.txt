@@ -1,0 +1,53 @@
+What we consider good queries:
+1. “UCI ICS”
+2. “iphone”
+3. “Computer Science”
+4. “Admission rate”
+5. “ICS professors”
+6. “ICS research”
+7. “UCI campus”
+8. “WICS”
+9. “UCI scholarships”
+10. “school”
+
+These are good queries because the keywords we typed in are
+related to the web pages we crawled. Moreover, these queries are 
+considered good because they 
+are clear, precise, and without stopwords. This removes a lot 
+of useless documents for which we have to compute scores. Besides
+that, the queries we give could be more specific. By giving
+particular queries, it would be tough to find the
+intersected documents containing every keyword implemented, influencing the result. 
+
+
+
+What we consider bad queries:
+1. “What are the specific admission requirements for the UCI ICS undergraduate program?”
+2. “What concentrations or specializations are available within the UCI ICS graduate program?”
+3. “Can you provide details on the research opportunities available in the UCI ICS program?”
+4. “How does the UCI ICS program integrate industry partnerships and internships for students?”
+5. “What are the core courses and electives offered in the UCI ICS curriculum?”
+6. “What kind of job placement support does UCI provide for ICS graduates?”
+7. “Can you describe the faculty expertise and research areas in the UCI ICS department?”
+8. “What are the student organizations and extracurricular activities related to ICS at UCI?”
+9. “What are the typical career paths for graduates of the UCI ICS program?”
+10. “How does UCI ICS support diversity and inclusion within the program?”
+
+Although these queries also contain some keywords that are 
+related to the web pages we crawled, they contain too 
+many stopwords and are too specific. The intersected documents 
+between every keyword of each query would be too small. We might
+even ignore those more significant documents because not every
+keyword is inside every stored document. 
+
+
+Improvements we made:
+We start by using the psuedocode in Lecture 20. We calculate
+the score for every document each keyword has. Unfortunately, 
+we will take a long time to get the results of every 
+query. It took us 22 seconds to get the top ten URLs of the query
+"ics class." After that, we optimize our algorithm by removing 
+nearly duplicated documents and finding intersected documents among 
+the keywords so the search engine can run faster. We also avoid calculate cosine score
+For too many times, by sorting the document with decreasing normalized tf score and then only perform 
+Cosine calculation on those top 50 document. Eventually list out the top ten relevant result.
